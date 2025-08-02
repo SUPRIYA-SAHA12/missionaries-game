@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Missionaries and Cannibals</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Missionaries and Cannibals</h1>
+    <div id="game">
+        <div class="riverbank" id="left-bank">
+            <div class="missionary">M</div>
+            <div class="missionary">M</div>
+            <div class="missionary">M</div>
+            <div class="cannibal">C</div>
+            <div class="cannibal">C</div>
+            <div class="cannibal">C</div>
+        </div>
+
+        <div id="river">
+            <div id="boat">Boat
+                <div id="boat-passengers"></div>
+            </div>
+        </div>
+
+        <div class="riverbank" id="right-bank">
+            <!-- Empty initially -->
+        </div>
+    </div>
+    <div class="character" onclick="selectCharacter(this)">M</div>
+
+    <button onclick="move()">Move</button>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

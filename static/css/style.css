@@ -1,0 +1,43 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    background-color: #69c1e9;
+}
+
+#game {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.riverbank {
+    background-color: #0e5b12;
+    padding: 20px;
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;
+}
+
+#river {
+    background-color: #4fc3f7;
+    width: 200px;
+    height: 300px;
+    position: relative;
+}
+
+#boat {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #795548;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.missionary, .cannibal {
+    margin: 5px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 50%;
+}
