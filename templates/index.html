@@ -5,38 +5,77 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <style>
     body { font-family: Arial; text-align: center;
-        background-image: url(revier.jpg);}
-    .status { margin: 20px; font-size: 20px;
-          border:2 solid black; width: 100px;height: 80px; }
+        background-color: lightblue;}
+      .status-container{
+        display: flex;
+           justify-content: center;
+          gap: 400px; 
+          margin-top: 30px;
+          margin-bottom: 30px;
+
+      }
+    .status { margin: 20px auto; font-size: 20px;
+          border:2 solid rgb(14, 146, 12); width: 300px;height: 400px;display:flex;align-items: center; justify-content: center;border-radius: 18px; background-color: green;box-shadow: 0 4px 16px gray;color: rgb(58, 56, 56);font-weight: bold;margin-left: auto;margin-right: 40px;margin-top:20px ; text-shadow: 1px 1px 2px #145214;box-shadow: 0 8px 24px 0 rgba(34,139,34,0.2), 0 1.5px 0 #b6e388 inset; }
+    .status2{
+      margin: 20px auto; font-size: 20px;
+          border:2 solid rgb(14, 146, 12); width: 300px;height: 400px;display:flex;align-items: center; justify-content: center;border-radius: 18px; background-color: green;box-shadow: 0 4px 16px gray;color: rgb(58, 56, 56);font-weight: bold;margin-left: 40px;margin-right:auto;margin-top:20px ; text-shadow: 1px 1px 2px #145214;box-shadow: 0 8px 24px 0 rgba(34,139,34,0.2), 0 1.5px 0 #b6e388 inset;
+      .status3{
+        
+          width: 400px;
+    margin: 30px auto 0 auto; /* top, auto left/right, 0 bottom */
+    font-size: 22px;
+    border: 2px solid #0d5c99;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #e0ffe0 0%, #b6e388 100%);
+    box-shadow: 0 4px 16px rgba(8, 51, 144, 0.15);
+    color: #033058;
+    font-weight: bold;
+    padding: 24px 0;
+    text-align: center;
+   
+
+      }
+
+    }
+                 
     
   </style>
 </head>
 <body>
   <h1>Missionaries and Cannibals Game</h1>
+  <div class="status-container">
    
-  <div class="status">
-    M = {{ ml }} C = {{ cl }}
-    {% if boat == 'Left' %}
+    <div class="status">
+    <!-- M = {{ missionaries_on_left }} C = {{ cannibals_on_left }}
+    {% if boat_side == 'Left' %}
     |B-----|
     {% else %}
     |-----B|
-    {% endif %}
-    M = {{ mr }} C = {{ cr }}
+    {% endif %} -->
+    M = {{  missionaries_on_left }} C = {{  cannibals_on_left }}
   </div>
-
-  <p style="color: red">{{ msg }}</p>
+  <div class="status2">
+     M = {{ missionaries_on_right }} C = {{cannibals_on_right  }}
+  </div>
+</div>
+  
+  
+   <div class="status3">
+  <p style="color: red">{{ message }}</p>
 
   <form method="POST" action="/move">
     <label>Missionaries to Move: </label>
-    <input type="number" name="missionaries" min="0" max="2" required><br><br>
+    <input type="number" name="missionaries" min="0" max="2" style="width: 50px;height: 40px; border-radius: 10px;" required><br><br>
     <label>Cannibals to Move: </label>
-    <input type="number" name="cannibals" min="0" max="2" required><br><br>
+    <input type="number" name="cannibals" min="0" max="2" style="width: 50px;height: 40px; border-radius: 10px;" required><br><br>
     <button type="submit">Move</button>
   </form>
 
   <br><br>
   <form action="/reset">
     <button>Reset Game</button>
+    </div>
+    
   </form>
 </body>
 </html>
