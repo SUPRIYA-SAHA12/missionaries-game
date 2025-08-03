@@ -1,34 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Missionaries and Cannibals</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>Missionaries and Cannibals Game</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body { font-family: Arial; text-align: center;
+        background-image: url(revier.jpg);}
+    .status { margin: 20px; font-size: 20px;
+          border:2 solid black; width: 100px;height: 80px; }
+    
+  </style>
 </head>
 <body>
-    <h1>Missionaries and Cannibals</h1>
-    <div id="game">
-        <div class="riverbank" id="left-bank">
-            <div class="missionary">M</div>
-            <div class="missionary">M</div>
-            <div class="missionary">M</div>
-            <div class="cannibal">C</div>
-            <div class="cannibal">C</div>
-            <div class="cannibal">C</div>
-        </div>
+  <h1>Missionaries and Cannibals Game</h1>
+   
+  <div class="status">
+    M = {{ ml }} C = {{ cl }}
+    {% if boat == 'Left' %}
+    |B-----|
+    {% else %}
+    |-----B|
+    {% endif %}
+    M = {{ mr }} C = {{ cr }}
+  </div>
 
-        <div id="river">
-            <div id="boat">Boat
-                <div id="boat-passengers"></div>
-            </div>
-        </div>
+  <p style="color: red">{{ msg }}</p>
 
-        <div class="riverbank" id="right-bank">
-            <!-- Empty initially -->
-        </div>
-    </div>
-    <div class="character" onclick="selectCharacter(this)">M</div>
+  <form method="POST" action="/move">
+    <label>Missionaries to Move: </label>
+    <input type="number" name="missionaries" min="0" max="2" required><br><br>
+    <label>Cannibals to Move: </label>
+    <input type="number" name="cannibals" min="0" max="2" required><br><br>
+    <button type="submit">Move</button>
+  </form>
 
-    <button onclick="move()">Move</button>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <br><br>
+  <form action="/reset">
+    <button>Reset Game</button>
+  </form>
 </body>
 </html>
+
+
+
+
+
+
+  
