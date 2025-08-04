@@ -4,76 +4,190 @@
   <title>Missionaries and Cannibals Game</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <style>
-    body { font-family: Arial; text-align: center;
-        background-color: lightblue;}
+    body { 
+      font-family: Arial, sans-serif;
+      /* background-image: url("{{ url_for('static', filename='background.jpg') }}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+       display: flex;    */
+    
+   }
       .status-container{
-        display: flex;
-           justify-content: center;
-          gap: 400px; 
-          margin-top: 30px;
-          margin-bottom: 30px;
+        
+         width: 900px;
+    min-height: 300px;
+    margin: 40px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 30px 20px;
+    border-radius: 24px;
+    background: url('{{ url_for("static", filename="background.jpg") }}') center center/cover no-repeat, 
+                linear-gradient(135deg, #e0ffe0 0%, #b6e388 100%);
+    box-shadow: 0 4px 24px rgba(34,139,34,0.15);
+    position: relative;
+
 
       }
-    .status { margin: 20px auto; font-size: 20px;
-          border:2 solid rgb(14, 146, 12); width: 300px;height: 400px;display:flex;align-items: center; justify-content: center;border-radius: 18px; background-color: green;box-shadow: 0 4px 16px gray;color: rgb(58, 56, 56);font-weight: bold;margin-left: auto;margin-right: 40px;margin-top:20px ; text-shadow: 1px 1px 2px #145214;box-shadow: 0 8px 24px 0 rgba(34,139,34,0.2), 0 1.5px 0 #b6e388 inset; }
-    .status2{
-      margin: 20px auto; font-size: 20px;
-          border:2 solid rgb(14, 146, 12); width: 300px;height: 400px;display:flex;align-items: center; justify-content: center;border-radius: 18px; background-color: green;box-shadow: 0 4px 16px gray;color: rgb(58, 56, 56);font-weight: bold;margin-left: 40px;margin-right:auto;margin-top:20px ; text-shadow: 1px 1px 2px #145214;box-shadow: 0 8px 24px 0 rgba(34,139,34,0.2), 0 1.5px 0 #b6e388 inset;
-      .status3{
+    .status,.status2 { 
+     
+      /* background: linear-gradient(135deg, #e0ffe0 0%, #b6e388 100%);
+    
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(34,139,34,0.15);
+     
+      font-weight: bold;
+      width: 340px;
+      min-height: 180px;
+      padding: 24px 0 24px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 10px;
+      display: flex; */
+       width: 30%;
+       display: flex;
+                 flex-wrap: wrap;
+          justify-content: center;
+        align-items: flex-end;
         
-          width: 400px;
-    margin: 30px auto 0 auto; /* top, auto left/right, 0 bottom */
-    font-size: 22px;
-    border: 2px solid #0d5c99;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #e0ffe0 0%, #b6e388 100%);
-    box-shadow: 0 4px 16px rgba(8, 51, 144, 0.15);
-    color: #033058;
-    font-weight: bold;
-    padding: 24px 0;
-    text-align: center;
+
+  
+        }
+        .game-tittle{
+           text-align: center;
+           font-size: 32px;
+            margin-top: 20px;
+         margin-bottom: 10px;
+          color: darkgreen;
+         font-family: 'Segoe UI', sans-serif;
+           justify-content: center;
+
+        }
+    
+      .status3{
+        width: 120px;
+  min-height: 40px;
+  margin: 0 10px;
+  font-size: 10px;
+  border: 2px solid #0d5c99;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #e0ffe0 0%, #b6e388 100%);
+  box-shadow: 0 4px 16px rgba(8, 51, 144, 0.15);
+  color: #033058;
+  font-weight: bold;
+  padding: 24px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
    
 
       }
+      .character {
+  height: 80px;
+  margin: 3px;
+  vertical-align: middle;
+  transition: transform 0.3s;
+}
+.character:hover {
+  transform: scale(1.2);
+}
+.button{
+    
+  width: 50px;
+  height: 30px;
+  background-color: green;
+  color: white;
+  font-size: 10px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
 
-    }
+.button:hover {
+  transform: scale(1.08);
+  background-color: #013301;
+  box-shadow: 0 4px 16px rgba(34,139,34,0.25);
+}
+.button:active {
+  transform: scale(0.96);
+  background-color: #020457;
+}
+
+    
                  
     
   </style>
 </head>
 <body>
-  <h1>Missionaries and Cannibals Game</h1>
-  <div class="status-container">
+    <h1 class="game-tittle">Missionaries and Cannibals Game</h1>
+   <div class="status-container">
+  
+ 
    
     <div class="status">
+     
     <!-- M = {{ missionaries_on_left }} C = {{ cannibals_on_left }}
     {% if boat_side == 'Left' %}
     |B-----|
     {% else %}
     |-----B|
     {% endif %} -->
-    M = {{  missionaries_on_left }} C = {{  cannibals_on_left }}
-  </div>
-  <div class="status2">
-     M = {{ missionaries_on_right }} C = {{cannibals_on_right  }}
-  </div>
-</div>
+   <!-- M = {{  missionaries_on_left }} C = {{  cannibals_on_left }} -->
+    {% for i in range(missionaries_on_left) %}
+    <img src="{{ url_for('static', filename='image/missionary.png') }}" alt="Missionary" style="height:40px;vertical-align:middle;" class="character">
+  {% endfor %}
+  {% for i in range(cannibals_on_left) %}
+    <img src="{{ url_for('static', filename='image/cannibal.png') }}" alt="Cannibal" style="height:40px;vertical-align:middle;">
+  {% endfor %}
+
   
-  
-   <div class="status3">
+   
+   
+  </div>
+  <div class="status3">
+
   <p style="color: red">{{ message }}</p>
+  <p style="color: green">Boat Side: {{boat_side}}</p>
 
   <form method="POST" action="/move">
     <label>Missionaries to Move: </label>
-    <input type="number" name="missionaries" min="0" max="2" style="width: 50px;height: 40px; border-radius: 10px;" required><br><br>
+    <input type="number" name="missionaries" min="0" max="2" style="width: 40px;height: 20px; border-radius: 10px;" required><br><br>
     <label>Cannibals to Move: </label>
-    <input type="number" name="cannibals" min="0" max="2" style="width: 50px;height: 40px; border-radius: 10px;" required><br><br>
-    <button type="submit">Move</button>
+    <input type="number" name="cannibals" min="0" max="2" style="width: 40px;height: 20px; border-radius: 10px;" required><br><br>
+    <button type="submit" class="button">Move</button>
   </form>
 
   <br><br>
   <form action="/reset">
-    <button>Reset Game</button>
+    <button class="button">Reset Game</button>
+    </div>
+  <div class="status2">
+    
+    <br>
+    {% for i in range(missionaries_on_right) %}
+    <img src="{{ url_for('static', filename='image/missionary.png') }}" alt="Missionary" style="height:40px;vertical-align:middle;" class="character">
+  {% endfor %}
+  <br>
+  {% for i in range(cannibals_on_right) %}
+    <img src="{{ url_for('static', filename='image/cannibal.png') }}" alt="Cannibal" style="height:40px;vertical-align:middle;" class="character">
+  {% endfor %}
+    
+  </div>
+
+  
+  
+   
     </div>
     
   </form>

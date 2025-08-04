@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 
-app = Flask(__name__)
+app = Flask(__name__) #entry point
 app.secret_key = 'secret_key_for_session'
 
 @app.route('/')
